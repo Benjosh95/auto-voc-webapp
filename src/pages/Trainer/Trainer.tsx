@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDeleteVoc, useVocs } from '../../hooks/vocHooks'; 
-import './VocabularyTrainer.css';
+import './Trainer.css';
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const VocabularyTrainer: React.FC = () => {
+export const Trainer: React.FC = () => {
     const { data: vocs, isLoading, isError, error } = useVocs();
     const deleteVoc = useDeleteVoc();
     
@@ -63,7 +63,7 @@ const VocabularyTrainer: React.FC = () => {
     if (!vocs || vocs.length === 0) return <div>No vocabulary data available</div>;
 
     return (
-        <div className="vocabulary-trainer" tabIndex={0} onKeyDown={handleKeyDown}>
+        <div className="trainer" tabIndex={0} onKeyDown={handleKeyDown}>
             <button className="nav-button left" onClick={handlePreviousCard}>&lt;</button>
             <div className="card-container">
                 <div className={`card ${isFlipped ? 'flipped' : ''}`} onClick={handleCardClick}>
@@ -86,4 +86,4 @@ const VocabularyTrainer: React.FC = () => {
     );
 };
 
-export default VocabularyTrainer;
+export default Trainer;

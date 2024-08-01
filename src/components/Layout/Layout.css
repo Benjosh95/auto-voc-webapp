@@ -1,0 +1,17 @@
+.layout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.layout-main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex:1;
+    padding: 2rem;
+
+    text-align: center;
+
+    outline: none; /* Prevent focus border */
+}

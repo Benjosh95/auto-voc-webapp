@@ -13,10 +13,21 @@
     padding: 0 1rem;
 }
 
-.navbar-logo {
+.navbar-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
     color: #fff;
     text-decoration: none;
     font-size: 1.5rem;
+}
+
+.navbar-logo {
+    color: rgb(20, 89, 192);
+    height: 34px;
+    width: 34px;
 }
 
 .navbar-links {
