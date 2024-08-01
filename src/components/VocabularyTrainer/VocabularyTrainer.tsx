@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { useVocs } from '../../hooks/vocHooks'; 
+import { useDeleteVoc, useVocs } from '../../hooks/vocHooks'; 
 import './VocabularyTrainer.css';
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const VocabularyTrainer: React.FC = () => {
     const { data: vocs, isLoading, isError, error } = useVocs();
+    const deleteVoc = useDeleteVoc();
+    
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isFlipped, setIsFlipped] = useState(false);
 
@@ -39,6 +42,20 @@ const VocabularyTrainer: React.FC = () => {
         setIsFlipped(!isFlipped);
     };
 
+    // Handle delete card
+    const handleDeleteCard = () => {
+        if (!vocs) return;
+        const vocId = vocs[currentIndex].id;
+        deleteVoc.mutate(vocId, {
+            onSuccess: () => {
+                // Optionally, remove the deleted card from the local state
+                // const updatedVocs = vocs.filter((_, index) => index !== currentIndex);
+                // setVocs(updatedVocs);
+                setCurrentIndex((prevIndex) => (prevIndex === 0 ? 0 : prevIndex - 1));
+            },
+        });
+    };
+
     // Render loading state, error state, or the cards
     if (isLoading) return <div>Loading...</div>;
     if (isError) return <div>Error: {error?.message}</div>;
@@ -57,8 +74,11 @@ const VocabularyTrainer: React.FC = () => {
                         {vocs[currentIndex].german}
                     </div>
                 </div>
-                <div className="card-counter">
-                    {currentIndex + 1} / {vocs.length}
+                <div className="card-utils">
+                    <div className="card-counter">
+                        Cards {currentIndex + 1} / {vocs.length}
+                    </div>
+                    <RiDeleteBin6Line className="card-delete-icon" onClick={handleDeleteCard}/>
                 </div>
             </div>
             <button className="nav-button right" onClick={handleNextCard}>&gt;</button>

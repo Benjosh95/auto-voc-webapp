@@ -62,10 +62,34 @@
     transform: rotateY(360deg);
 }
 
-.card-counter {
+.card-utils {
+    display: flex;
+    align-items: center;
     margin-top: 1rem;
+    justify-content: center;
+    width: 100%;
+    gap: 26px;
+}
+
+.card-counter {
     font-size: 18px;
     color: #555;
+}
+
+.card-delete-icon {
+    height: 26px;
+    width: 26px;
+    padding: 7px;
+
+    border-radius: 10px;
+    background-color: rgba(212, 196, 196, 0.537);
+    color: red;
+
+    cursor: pointer;
+}
+.card-delete-icon:hover {
+    background-color: rgba(194, 33, 33, 0.286);
+    color: rgb(221, 9, 9);
 }
 
 .nav-button {
