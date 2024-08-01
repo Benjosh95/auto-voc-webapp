@@ -5,7 +5,13 @@
 }
 
 .homepage-main-content {
-    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex:1;
     padding: 2rem;
+
     text-align: center;
+
+    outline: none; /* Prevent focus border */
 }
