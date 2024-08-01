@@ -1,16 +1,10 @@
+import { Voc } from "../types/Voc";
 import apiClient from "./apiClient";
-
-export interface Voc {
-    id: number;
-    english: string;
-    german: string;
-}
 
 export const fetchVocs = async (): Promise<Voc[]> => {
     const response = await apiClient.get<Voc[]>("/vocs");
     return response.data;
 }
-
 
 export const fetchVocById = async (id: number): Promise<Voc> => {
     const response = await apiClient.get<Voc>(`/vocs/${id}`);
