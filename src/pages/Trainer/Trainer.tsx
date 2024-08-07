@@ -6,7 +6,8 @@ import { Voc } from '../../types/Voc';
 import { updateVocStatus } from './trainerUtility';
 
 export const Trainer: React.FC = () => {
-  const { data: fetchedVocs, isLoading, isError, error } = useVocs();
+  const today = new Date().toISOString().split('T')[0];
+  const { data: fetchedVocs, isLoading, isError, error } = useVocs({ nextReviewDate: today });
   const deleteVoc = useDeleteVoc();
   const updateVoc = useUpdateVoc();
   
@@ -16,18 +17,9 @@ export const Trainer: React.FC = () => {
 
   useEffect(() => {
     if (fetchedVocs) {
-      filterVocs(fetchedVocs);
+        setVocs(fetchedVocs)
     }
   }, [fetchedVocs]);
-
-  const filterVocs = (vocsToFilter: Voc[]) => {
-    const today = new Date().toISOString().split('T')[0];
-    const filteredVocs = vocsToFilter.filter(voc => {
-      const vocDate = new Date(voc.nextReviewDate).toISOString().split('T')[0];
-      return vocDate === today;
-    });
-    setVocs(filteredVocs);
-  };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'ArrowRight') {
@@ -66,7 +58,7 @@ export const Trainer: React.FC = () => {
           const updatedVocs = vocs.map((voc, index) =>
             index === currentIndex ? updatedVoc : voc
           );
-          filterVocs(updatedVocs);
+          setVocs(updatedVocs);
           handleNextVoc();
         },
         onError: (error) => {
