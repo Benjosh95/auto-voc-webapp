@@ -1,5 +1,6 @@
-import { Voc } from "../../types/Voc";
+import { Voc } from "../../types/voc";
 
+// Leitner-Box system
 export const updateVocStatus = (voc: Voc, performance: 'good' | 'medium' | 'bad'): Voc => {
     const today = new Date();
     let nextReviewDate = new Date(today);

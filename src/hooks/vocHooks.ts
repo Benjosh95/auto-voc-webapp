@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { fetchVocs, fetchVocById, createVoc, updateVoc, deleteVoc } from "../api/vocApi"
-import { Voc } from "../types/Voc";
+import { Voc } from "../types/voc";
 
 export const useVocs = (filters: {[key: string]: any} = {}) => {
     return useQuery<Voc[], Error>({
