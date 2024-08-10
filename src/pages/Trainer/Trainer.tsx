@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDeleteVoc, useUpdateVoc, useVocs } from '../../hooks/vocHooks';
 import './Trainer.css';
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { Voc } from '../../types/Voc';
+import { Voc } from '../../types/voc';
 import { updateVocStatus } from './trainerUtility';
 
 export const Trainer: React.FC = () => {

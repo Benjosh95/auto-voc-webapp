@@ -1,8 +1,9 @@
-import { Voc } from "../../types/Voc";
+import { Voc } from "../../types/voc";
 
+// Leitner-Box system
 export const updateVocStatus = (voc: Voc, performance: 'good' | 'medium' | 'bad'): Voc => {
     const today = new Date();
-    let nextReviewDate = new Date(today);
+    const nextReviewDate = new Date(today);
   
     if (performance === 'good') {
       voc.status = Math.min(voc.status + 1, 5); // Move to the next box

@@ -1,7 +1,7 @@
-import { Voc } from "../types/Voc";
 import apiClient from "./apiClient";
+import { Voc } from "../types/voc";
 
-export const fetchVocs = async (filters: {[key: string]: any} = {}): Promise<Voc[]> => {
+export const fetchVocs = async (filters: Record<string, string> = {}): Promise<Voc[]> => {
     const params = new URLSearchParams(filters).toString();
     const response = await apiClient.get<Voc[]>(`/vocs?${params}`);
     return response.data;
