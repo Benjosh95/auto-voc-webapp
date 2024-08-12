@@ -94,10 +94,10 @@ export const Trainer: React.FC = () => {
   if (!vocs.length) return <div>No vocabulary data available</div>;
 
   return (
-    <div className="trainer" tabIndex={0} onKeyDown={handleKeyDown} {...swipeHandlers}>
+    <div className="trainer" tabIndex={0} onKeyDown={handleKeyDown}>
       <button className="nav-button left" onClick={handlePreviousVoc}>&lt;</button>
       <div className="card-container">
-        <div className={`card ${isFlipped ? 'flipped' : ''}`} onClick={handleVocClick}>
+        <div className={`card ${isFlipped ? 'flipped' : ''}`} onClick={handleVocClick} {...swipeHandlers}>
           <div className="card-front">
             {vocs[currentIndex].english}
           </div>
