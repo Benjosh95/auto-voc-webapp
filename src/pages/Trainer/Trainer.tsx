@@ -4,6 +4,7 @@ import './Trainer.css';
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Voc } from '../../types/voc';
 import { updateVocStatus } from './trainerUtility';
+import { useSwipeable } from 'react-swipeable';
 
 export const Trainer: React.FC = () => {
   const today = new Date().toISOString().split('T')[0];
@@ -80,13 +81,20 @@ export const Trainer: React.FC = () => {
     });
   };
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => handleNextVoc(),
+    onSwipedRight: () => handlePreviousVoc(),
+    preventScrollOnSwipe: true,
+    trackMouse: true
+  });
+
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error?.message}</div>;
 
   if (!vocs.length) return <div>No vocabulary data available</div>;
 
   return (
-    <div className="trainer" tabIndex={0} onKeyDown={handleKeyDown}>
+    <div className="trainer" tabIndex={0} onKeyDown={handleKeyDown} {...swipeHandlers}>
       <button className="nav-button left" onClick={handlePreviousVoc}>&lt;</button>
       <div className="card-container">
         <div className={`card ${isFlipped ? 'flipped' : ''}`} onClick={handleVocClick}>

@@ -1,11 +1,10 @@
+/* Existing styles */
 .trainer {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 100%;
-    padding: 20px;
-    gap: 40px;
+    width: 600px;
     outline: none; /* Prevent focus border */
 }
 
@@ -14,6 +13,7 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    width: 100%;
 }
 
 .card {
@@ -80,12 +80,11 @@
     height: 36px;
     width: 36px;
     padding: 7px;
-
     border-radius: 10px;
     color: red;
-
     cursor: pointer;
 }
+
 .card-delete-icon:hover {
     background-color: rgba(194, 33, 33, 0.286);
     color: rgb(221, 9, 9);
@@ -98,9 +97,6 @@
     font-size: 24px;
     cursor: pointer;
     padding: 10px 20px;
-
-
-    transform: translateY(-50%);
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, transform 0.3s;
@@ -116,7 +112,7 @@
 
 .nav-button:hover {
     background-color: #0056b3;
-    transform: translateY(-50%) scale(1.1);
+    transform: scale(1.1);
 }
 
 .nav-button:focus {
@@ -138,7 +134,6 @@
     border: 2px solid rgb(184, 180, 180);
     border-radius: 12px; /* Slightly more rounded corners */
     box-shadow: 0 8px 24px rgba(67, 66, 66, 0.3); /* More intense shadow */
-
     cursor: pointer;
 }
 
@@ -166,3 +161,12 @@
     background-color: rgb(155, 151, 151);
 }
 
+/* Media query for smaller devices */
+@media (max-width: 768px) {
+    .nav-button {
+        display: none;
+    }
+    .trainer {
+        width: 100%;
+    }
+}
