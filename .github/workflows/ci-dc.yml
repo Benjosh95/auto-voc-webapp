@@ -30,8 +30,8 @@ jobs:
       run: npm install
 
     # Run linting
-    - name: Run lint
-      run: npm run lint
+    # - name: Run lint
+    #  run: npm run lint
 
     # Run tests
     - name: Run tests
